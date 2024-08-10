@@ -1,0 +1,84 @@
+version: '3.8'
+
+services:
+
+  # db:
+  #   image: postgres:14
+  #   container_name: supabase_db
+  #   environment:
+  #     POSTGRES_PASSWORD: example_password
+  #     POSTGRES_USER: example_user
+  #     POSTGRES_DB: example_db
+  #   ports:
+  #     - "5432:5432"
+
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+  supabase:
+    image: supabase/supabase:latest
+    ports:
+      - "8000:8000"
+    environment:
+      POSTGRES_PASSWORD: your_postgres_password
+      JWT_SECRET: your_jwt_secret
+      ANON_KEY: your_anon_key
+      SERVICE_ROLE_KEY: your_service_role_key
+
+  sentry:
+    image: sentry:latest
+    ports:
+      - "9000:9000"
+    environment:
+      SENTRY_SECRET_KEY: your_sentry_secret_key
+      SENTRY_POSTGRES_HOST: sentry_postgres
+      SENTRY_DB_USER: sentry
+      SENTRY_DB_PASSWORD: sentry_db_password
+    depends_on:
+      - sentry_postgres
+      - sentry_redis
+
+  sentry_postgres:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: sentry
+      POSTGRES_PASSWORD: sentry_db_password
+      POSTGRES_DB: sentry
+    volumes:
+      - sentry_postgres_data:/var/lib/postgresql/data
+
+  sentry_redis:
+    image: redis:latest
+
+  strapi:
+    image: strapi/strapi
+    environment:
+      DATABASE_CLIENT: postgres
+      DATABASE_NAME: strapi
+      DATABASE_HOST: strapi_postgres
+      DATABASE_PORT: 5432
+      DATABASE_USERNAME: strapi
+      DATABASE_PASSWORD: strapi
+    volumes:
+      - ./app:/srv/app
+    ports:
+      - '1337:1337'
+    depends_on:
+      - strapi_postgres
+
+  strapi_postgres:
+    image: postgres
+    environment:
+      POSTGRES_DB: strapi
+      POSTGRES_USER: strapi
+      POSTGRES_PASSWORD: strapi
+    volumes:
+      - ./data:/var/lib/postgresql/data
+
+volumes:
+  redis_data:
+  sentry_postgres_data:
