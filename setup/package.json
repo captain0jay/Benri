@@ -1,0 +1,11 @@
+{
+  "name": "setup",
+  "version": "1.0.0",
+  "description": "setup for benri for keeping neccessary stuff only",
+  "main": "setup.js",
+  "scripts": {
+    "test": "npm run dev"
+  },
+  "author": "",
+  "license": "ISC"
+}
