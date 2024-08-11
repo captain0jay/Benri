@@ -1,0 +1,30 @@
+# name: Node.js CI
+
+# on:
+#   push:
+#     branches:
+#       - main
+#   pull_request:
+#     branches:
+#       - main
+
+# jobs:
+#   backend-tests:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v2
+
+#       - name: Set up Node.js
+#         uses: actions/setup-node@v2
+#         with:
+#           node-version: '18.17.0'  # Specify the Node.js version
+
+#       - name: Install backend dependencies
+#         working-directory: backend
+#         run: npm install
+
+#       - name: Run backend tests
+#         working-directory: backend
+#         run: npm test
