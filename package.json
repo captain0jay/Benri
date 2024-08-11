@@ -1,0 +1,14 @@
+{
+  "name": "benri",
+  "version": "1.0.0",
+  "description": "Benri is an all purpose template that gives you an instant boost at the start of making a project and decreases development time by providing essential stuff quickly!",
+  "main": "main.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Captain Jay",
+  "license": "ISC"
+}
