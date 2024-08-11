@@ -5,8 +5,8 @@
 - [x] Supabase
 - [x] PostgreSQL
 <!-- - [ ] Drizzle ORM -->
-- [ ] Strapi
-- [ ] Astro
+- [x] Strapi
+- [x] Astro
 - [x] Sentry
 - [x] Redis
 - [x] VitePress
@@ -17,3 +17,5 @@
 [https://excalidraw.com/](https://excalidraw.com/)
 
 [https://app.diagrams.net/](https://app.diagrams.net/)
+
+plans to add fuzzy search
