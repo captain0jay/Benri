@@ -19,3 +19,8 @@
 [https://app.diagrams.net/](https://app.diagrams.net/)
 
 plans to add fuzzy search
+
+## Keyboard shortcut functionality
+
+- adding all ui components in here 
+- 
